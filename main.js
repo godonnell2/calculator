@@ -1,23 +1,20 @@
 let result = 0;
 let display = document.querySelector("p");
 console.log(display);
-display.textContent = result;
 
 let buttons = document.querySelectorAll("button");
 
-//function storeNumber() {
-// let btn = buttons.forEach((button) => button.id);
-// console.log(btn);
-//display.textContent = btn;
-//}
+let buttonPressed;
 
-const buttonPressed = (e) => {
-  console.log(e.target.id); // Get ID of Clicked Element
-};
+buttons.forEach((button) =>
+  button.addEventListener("click", function (e) {
+    buttonPressed = button.id;
+    display.textContent = buttonPressed;
+    return buttonPressed;
+  })
+);
 
-for (let button of buttons) {
-  button.addEventListener("click", buttonPressed);
-}
+display.textContent = buttonPressed;
 
 function add(result, b) {
   return result + b;
