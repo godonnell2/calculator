@@ -17,22 +17,28 @@ buttons.forEach((button) =>
       buttonPressed === "*"
     ) {
       operator = button.id;
+      display.textContent = operator;
       console.log(operator);
-      secondNumber = firstNumber;
-      firstNumber = 0;
+      firstNumber = secondNumber;
+      secondNumber = 0;
       return;
     } else if (buttonPressed === "=") {
       if (operator === "+") {
         result = add(firstNumber, secondNumber);
-        display.textContent = result;
-        return;
+      } else if (operator === "-") {
+        result = subtract(firstNumber, secondNumber);
+      } else if (operator === "*") {
+        result = multiply(firstNumber, secondNumber);
+      } else if (operator === "/") {
+        result = divide(firstNumber, secondNumber);
       }
+      display.textContent = result;
     } else if (buttonPressed === "CE") {
     } else {
       let buttonPressedNumber = Number(buttonPressed);
-      firstNumber = firstNumber * 10 + buttonPressedNumber;
-      // display.textContent = firstNumber;
-      console.log(firstNumber);
+      secondNumber = secondNumber * 10 + buttonPressedNumber;
+      display.textContent = secondNumber;
+      console.log(secondNumber);
     }
     //secondNumber = firstNumber * 10 + buttonPressedNumber;
     //console.log(secondNumber);
@@ -45,17 +51,17 @@ function add(a, b) {
   return result;
 }
 
-function subtract(result, b) {
+function subtract(a, b) {
   result = a - b;
   return result;
 }
 
-function multiply(result, b) {
+function multiply(a, b) {
   result = a * b;
   return result;
 }
 
-function divide(result, b) {
+function divide(a, b) {
   result = a / b;
   return result;
 }
