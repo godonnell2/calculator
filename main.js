@@ -3,14 +3,32 @@ let result = 0;
 
 let buttons = document.querySelectorAll("button");
 
-let newNumber = 0;
+let firstNumber = 0;
+let operator;
+let secondNumber = 0;
 
 buttons.forEach((button) =>
   button.addEventListener("click", function (e) {
     const buttonPressed = Number(button.id);
-    newNumber = newNumber * 10 + buttonPressed;
-    display.textContent = newNumber;
-    console.log(newNumber);
+    firstNumber = firstNumber * 10 + buttonPressed;
+    display.textContent = firstNumber;
+    console.log(firstNumber);
+    if (
+      buttonPressed === "-" ||
+      buttonPressed === "+" ||
+      buttonPressed === "/" ||
+      buttonPressed === "*"
+    ) {
+      operator = buttonPressed;
+      return;
+    }
+    //secondNumber = firstNumber * 10 + buttonPressed;
+    //console.log(secondNumber);
+    //  display.textContent = secondNumber;
+    if (buttonPressed === "=") {
+    }
+    if (buttonPressed === "CE") {
+    }
   })
 );
 
