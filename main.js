@@ -1,57 +1,61 @@
 let display = document.querySelector("p");
-let result = 0;
+let result;
 
 let buttons = document.querySelectorAll("button");
 
 let firstNumber = 0;
-let operator;
+let operator = "";
 let secondNumber = 0;
 
 buttons.forEach((button) =>
   button.addEventListener("click", function (e) {
-    const buttonPressed = Number(button.id);
-    firstNumber = firstNumber * 10 + buttonPressed;
-    display.textContent = firstNumber;
-    console.log(firstNumber);
+    const buttonPressed = button.id;
     if (
       buttonPressed === "-" ||
       buttonPressed === "+" ||
       buttonPressed === "/" ||
       buttonPressed === "*"
     ) {
-      operator = buttonPressed;
+      operator = button.id;
+      console.log(operator);
+      secondNumber = firstNumber;
+      firstNumber = 0;
       return;
+    } else if (buttonPressed === "=") {
+      if (operator === "+") {
+        result = add(firstNumber, secondNumber);
+        display.textContent = result;
+        return;
+      }
+    } else if (buttonPressed === "CE") {
+    } else {
+      let buttonPressedNumber = Number(buttonPressed);
+      firstNumber = firstNumber * 10 + buttonPressedNumber;
+      // display.textContent = firstNumber;
+      console.log(firstNumber);
     }
-    //secondNumber = firstNumber * 10 + buttonPressed;
+    //secondNumber = firstNumber * 10 + buttonPressedNumber;
     //console.log(secondNumber);
     //  display.textContent = secondNumber;
-    if (buttonPressed === "=") {
-    }
-    if (buttonPressed === "CE") {
-    }
   })
 );
 
-function add(result, b) {
-  return result + b;
+function add(a, b) {
+  result = a + b;
+  return result;
 }
 
 function subtract(result, b) {
-  return result - b;
+  result = a - b;
+  return result;
 }
 
 function multiply(result, b) {
-  return result * b;
+  result = a * b;
+  return result;
 }
 
 function divide(result, b) {
-  return result / b;
+  result = a / b;
+  return result;
 }
-
-let b;
-let op;
-//function operate (a,b, op, function) {
-
-//  if (op === "-") { function subtract(a,b)};
-//   else (op === "+") { function subtract(a,b)
-//}
