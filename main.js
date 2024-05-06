@@ -1,20 +1,18 @@
-let result = 0;
 let display = document.querySelector("p");
-console.log(display);
+let result = 0;
 
 let buttons = document.querySelectorAll("button");
 
-let buttonPressed;
+let newNumber = 0;
 
 buttons.forEach((button) =>
   button.addEventListener("click", function (e) {
-    buttonPressed = button.id;
-    display.textContent = buttonPressed;
-    return buttonPressed;
+    const buttonPressed = Number(button.id);
+    newNumber = newNumber * 10 + buttonPressed;
+    display.textContent = newNumber;
+    console.log(newNumber);
   })
 );
-
-display.textContent = buttonPressed;
 
 function add(result, b) {
   return result + b;
