@@ -10,7 +10,10 @@ let secondNumber = 0;
 buttons.forEach((button) =>
   button.addEventListener("click", function (e) {
     const buttonPressed = button.id;
-    if (
+    if (buttonPressed === "CE") {
+      firstNumber = 0;
+      secondNumber = 0;
+    } else if (
       buttonPressed === "-" ||
       buttonPressed === "+" ||
       buttonPressed === "/" ||
@@ -33,7 +36,7 @@ buttons.forEach((button) =>
         result = divide(firstNumber, secondNumber);
       }
       display.textContent = result;
-    } else if (buttonPressed === "CE") {
+      secondNumber = result;
     } else {
       let buttonPressedNumber = Number(buttonPressed);
       secondNumber = secondNumber * 10 + buttonPressedNumber;
