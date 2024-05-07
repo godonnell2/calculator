@@ -13,6 +13,8 @@ buttons.forEach((button) =>
     if (buttonPressed === "CE") {
       firstNumber = 0;
       secondNumber = 0;
+      display.textContent = firstNumber;
+      operator = undefined;
     } else if (
       buttonPressed === "-" ||
       buttonPressed === "+" ||
@@ -33,10 +35,18 @@ buttons.forEach((button) =>
       } else if (operator === "*") {
         result = multiply(firstNumber, secondNumber);
       } else if (operator === "/") {
+        if (secondNumber === 0) {
+          display.textContent = "Fuck you";
+          return;
+        }
         result = divide(firstNumber, secondNumber);
       }
       display.textContent = result;
-      secondNumber = result;
+      firstNumber = result;
+    } else if (buttonPressed === "backspace") {
+      secondNumber = Math.floor(secondNumber / 10);
+      display.textContent = secondNumber;
+      console.log(secondNumber);
     } else {
       let buttonPressedNumber = Number(buttonPressed);
       secondNumber = secondNumber * 10 + buttonPressedNumber;
