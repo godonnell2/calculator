@@ -6,6 +6,7 @@ let buttons = document.querySelectorAll("button");
 let firstNumber = 0;
 let operator = "";
 let secondNumber = 0;
+let inputDecimal = false;
 
 buttons.forEach((button) =>
   button.addEventListener("click", function (e) {
@@ -47,11 +48,21 @@ buttons.forEach((button) =>
       secondNumber = Math.floor(secondNumber / 10);
       display.textContent = secondNumber;
       console.log(secondNumber);
+    } else if (buttonPressed === "decimal") {
+      inputDecimal = true;
+      return;
     } else {
-      let buttonPressedNumber = Number(buttonPressed);
-      secondNumber = secondNumber * 10 + buttonPressedNumber;
-      display.textContent = secondNumber;
-      console.log(secondNumber);
+      if (inputDecimal === true) {
+        let buttonPressedNumber = Number(buttonPressed);
+        secondNumber = secondNumber + buttonPressedNumber / 10;
+        display.textContent = secondNumber;
+        console.log(secondNumber);
+      } else {
+        let buttonPressedNumber = Number(buttonPressed);
+        secondNumber = secondNumber * 10 + buttonPressedNumber;
+        display.textContent = secondNumber;
+        console.log(secondNumber);
+      }
     }
     //secondNumber = firstNumber * 10 + buttonPressedNumber;
     //console.log(secondNumber);
